@@ -251,71 +251,6 @@ Then rebuild:
 colcon build --packages-select web_gui
 ```
 
-## Troubleshooting
-
-### Web Interface Not Loading
-
-**Check if service is running:**
-```bash
-sudo systemctl status web_gui
-# or
-ros2 node list | grep web_gui
-```
-
-**Check port availability:**
-```bash
-sudo netstat -tlnp | grep 8080
-```
-
-**Restart service:**
-```bash
-sudo systemctl restart web_gui
-```
-
-### Changes Not Reflecting
-
-**Did you rebuild?**
-```bash
-colcon build --packages-select web_gui
-```
-
-**Hard refresh browser:**
-- Press `Ctrl + F5` (Windows/Linux)
-- Press `Cmd + Shift + R` (Mac)
-
-**Restart web_gui:**
-```bash
-sudo systemctl restart web_gui
-```
-
-### ROS2 Topics Not Visible
-
-**Check ROS environment:**
-```bash
-export ROS_DOMAIN_ID=0
-export ROS_LOCALHOST_ONLY=1
-source /opt/ros/jazzy/setup.bash
-ros2 daemon stop && ros2 daemon start
-ros2 topic list
-```
-
-### 3D Visualization Not Working
-
-**Check rosbridge:**
-```bash
-ros2 node list | grep rosbridge
-```
-
-**Should see:**
-```
-/rosbridge_websocket
-```
-
-**If missing, restart web_gui:**
-```bash
-sudo systemctl restart web_gui
-```
-
 ## Directory Structure
 
 ```
@@ -405,8 +340,6 @@ sudo systemctl start web_gui
 
 ### SLAM
 - [FAST-LIO](https://github.com/hku-mars/FAST_LIO) - Fast LiDAR-Inertial Odometry
-- [FAST-LIO-LOCALIZATION](https://github.com/HViktorTsoi/FAST_LIO_LOCALIZATION) - Localization module
-- [ikd-Tree](https://github.com/hku-mars/ikd-Tree) - Dynamic KD-Tree for 3D kNN search
 
 ### Visualization
 - [Three.js](https://threejs.org/) - 3D graphics library
